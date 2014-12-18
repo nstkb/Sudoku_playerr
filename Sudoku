@@ -1,0 +1,170 @@
+package com.sudoku;
+
+public class Sudoku {
+    private final boolean[][] frozen;
+    private final char[][] data;
+    
+    public Sudoku() {
+        frozen = new boolean[9][9];
+        data = new char[9][9];
+        
+        for(short y = 0 ; y < 9 ; y++) {
+            for(short x = 0 ; x < 9 ; x++) {
+                data[y][x] = '0';
+            }
+        }
+    }
+    
+    public Sudoku(String placement) {
+        this();
+        
+        if((placement == null) || (placement.length() != 162)) {
+            throw new IllegalArgumentException("Placement string must " +
+                    "be exactly 162 characters long!");
+        }
+        
+        for(short y = 0 ; y < 9 ; y++) {
+            for(short x = 0 ; x < 9 ; x++) {
+                if(placement.charAt((y * 9) + x) == '1') {
+                    frozen[y][x] = true;
+                }
+                    
+                char c = placement.charAt((y * 9) + x + 81);
+                if((c >= '0') && (c <= '9')) {
+                    if(!validatePlacement(y, x, c)) {
+                        throw new IllegalArgumentException("Placement string " +
+                                "does not comply with Sudoku rules!");
+                    }
+                    
+                    data[y][x] = c;
+                } else {
+                    throw new IllegalArgumentException("Cannot insert data " +
+                            "other than digits from 0 to 9!");
+                }
+            }
+        }
+    }
+    
+    public boolean isEmpty() {
+        for(short y = 0 ; y < 9 ; y++) {
+            for(short x = 0 ; x < 9 ; x++) {
+                if(frozen[y][x] || (data[y][x] != '0')) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    public boolean isFull() {
+        for(short y = 0 ; y < 9 ; y++) {
+            for(short x = 0 ; x < 9 ; x++) {
+                if(data[y][x] == '0') {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    public boolean setDataAt(int y, int x, char data) {
+        if((y < 0) || (y >= 9) || (x < 0) || (x >= 9)) {
+            throw new IllegalArgumentException("Loction must lie within " +
+                    "(0,0) and (9,9)!");
+        }
+        
+        if(frozen[y][x]) {
+            throw new IllegalArgumentException("Cannot modify a frozen value!");
+        }
+        
+        if((data < '0') || (data > '9')) {
+            throw new IllegalArgumentException("Character must be " +
+                    " a single digit!");
+        }
+        
+        if(!validatePlacement(y, x, data)) {
+            return false;
+        }
+        
+        this.data[y][x] = data;
+        return true;
+    }
+    
+    public char getDataAt(int y, int x) {
+        if((y < 0) || (y >= 9) || (x < 0) || (x >= 9)) {
+            throw new IllegalArgumentException("Loction must lie within " +
+                    "(0,0) and (9,9)!");
+        } 
+        
+        return data[y][x];
+    }
+    
+    public boolean isFrozenAt(int y, int x) {
+        if((y < 0) || (y >= 9) || (x < 0) || (x >= 9)) {
+            throw new IllegalArgumentException("Loction must lie within " +
+                    "(0,0) and (9,9)!");
+        } 
+        
+        return frozen[y][x];
+    }
+    
+    private boolean validatePlacement(int y, int x, char data) {
+        if(data == '0') {
+            return true;
+        }
+        
+        // validate row and column
+        for(short i = 0 ; i < 9 ; i++) {
+            if(((i != x) && (this.data[y][i] == data)) ||
+                    ((this.data[i][x] == data) && (i != y))) {
+                return false;
+            }
+        }
+        
+        // validate segment
+        for(int i = (y / 3) * 3 ; i < (y / 3) * 3 + 3 ; i++) {
+            for(int j = (x / 3) * 3 ; j < (x / 3) * 3 + 3 ; j++) {
+                if((i != y) && (i != x) && (this.data[i][j] == data)) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    public void clear() {
+        for(int y = 0 ; y < 9 ; y++) {
+            for(int x = 0 ; x < 9 ; x++) {
+                if(!frozen[y][x]) {
+                    data[y][x] = '0';
+                }
+            }
+        }
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        
+        for(short y = 0 ; y < 9 ; y++) {
+            for(short x = 0 ; x < 9 ; x++) {
+                sb.append(frozen[y][x] ? '1' : '0');
+            }
+        }
+        
+        for(short y = 0 ; y < 9 ; y++) {
+            for(short x = 0 ; x < 9 ; x++) {
+                if(data[y][x] == 0) {
+                    sb.append('0');
+                } else {
+                    sb.append(data[y][x]);
+                }
+            }
+        }
+        
+        return sb.toString();
+    }
+}
