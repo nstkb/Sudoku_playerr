@@ -1,0 +1,1191 @@
+package com.sudoku;
+
+import java.awt.EventQueue;
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+public class Player extends JFrame implements KeyListener {
+
+    private final Map<JTextField, Point> locations;
+    private final JFileChooser fileChooser;
+    private Sudoku sudoku;
+    
+    public Player() {
+        initComponents();
+        
+        locations = new HashMap<>();
+        initLocationsMap();
+        
+        sudoku = new Sudoku();
+        initKeyListeners();
+        
+        fileChooser = new JFileChooser();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        d00 = new javax.swing.JTextField();
+        d01 = new javax.swing.JTextField();
+        d02 = new javax.swing.JTextField();
+        d10 = new javax.swing.JTextField();
+        d11 = new javax.swing.JTextField();
+        d12 = new javax.swing.JTextField();
+        d20 = new javax.swing.JTextField();
+        d21 = new javax.swing.JTextField();
+        d22 = new javax.swing.JTextField();
+        d15 = new javax.swing.JTextField();
+        d24 = new javax.swing.JTextField();
+        d23 = new javax.swing.JTextField();
+        d25 = new javax.swing.JTextField();
+        d03 = new javax.swing.JTextField();
+        d04 = new javax.swing.JTextField();
+        d05 = new javax.swing.JTextField();
+        d13 = new javax.swing.JTextField();
+        d14 = new javax.swing.JTextField();
+        d27 = new javax.swing.JTextField();
+        d26 = new javax.swing.JTextField();
+        d18 = new javax.swing.JTextField();
+        d07 = new javax.swing.JTextField();
+        d28 = new javax.swing.JTextField();
+        d06 = new javax.swing.JTextField();
+        d17 = new javax.swing.JTextField();
+        d16 = new javax.swing.JTextField();
+        d08 = new javax.swing.JTextField();
+        d46 = new javax.swing.JTextField();
+        d47 = new javax.swing.JTextField();
+        d36 = new javax.swing.JTextField();
+        d58 = new javax.swing.JTextField();
+        d37 = new javax.swing.JTextField();
+        d54 = new javax.swing.JTextField();
+        d53 = new javax.swing.JTextField();
+        d52 = new javax.swing.JTextField();
+        d45 = new javax.swing.JTextField();
+        d30 = new javax.swing.JTextField();
+        d34 = new javax.swing.JTextField();
+        d31 = new javax.swing.JTextField();
+        d32 = new javax.swing.JTextField();
+        d55 = new javax.swing.JTextField();
+        d40 = new javax.swing.JTextField();
+        d33 = new javax.swing.JTextField();
+        d41 = new javax.swing.JTextField();
+        d42 = new javax.swing.JTextField();
+        d44 = new javax.swing.JTextField();
+        d43 = new javax.swing.JTextField();
+        d51 = new javax.swing.JTextField();
+        d35 = new javax.swing.JTextField();
+        d50 = new javax.swing.JTextField();
+        d57 = new javax.swing.JTextField();
+        d56 = new javax.swing.JTextField();
+        d48 = new javax.swing.JTextField();
+        d38 = new javax.swing.JTextField();
+        d74 = new javax.swing.JTextField();
+        d72 = new javax.swing.JTextField();
+        d71 = new javax.swing.JTextField();
+        d65 = new javax.swing.JTextField();
+        d80 = new javax.swing.JTextField();
+        d73 = new javax.swing.JTextField();
+        d81 = new javax.swing.JTextField();
+        d78 = new javax.swing.JTextField();
+        d68 = new javax.swing.JTextField();
+        d87 = new javax.swing.JTextField();
+        d86 = new javax.swing.JTextField();
+        d83 = new javax.swing.JTextField();
+        d84 = new javax.swing.JTextField();
+        d75 = new javax.swing.JTextField();
+        d82 = new javax.swing.JTextField();
+        d60 = new javax.swing.JTextField();
+        d64 = new javax.swing.JTextField();
+        d61 = new javax.swing.JTextField();
+        d62 = new javax.swing.JTextField();
+        d85 = new javax.swing.JTextField();
+        d70 = new javax.swing.JTextField();
+        d63 = new javax.swing.JTextField();
+        d88 = new javax.swing.JTextField();
+        d67 = new javax.swing.JTextField();
+        d77 = new javax.swing.JTextField();
+        d66 = new javax.swing.JTextField();
+        d76 = new javax.swing.JTextField();
+        menuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        openMenuItem = new javax.swing.JMenuItem();
+        saveAsMenuItem = new javax.swing.JMenuItem();
+        exitMenuItem = new javax.swing.JMenuItem();
+        editMenu = new javax.swing.JMenu();
+        resetMenuItem = new javax.swing.JMenuItem();
+        clearMenuItem = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sudoku Player");
+
+        d00.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d00.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d00.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d01.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d01.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d01.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d02.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d02.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d02.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d10.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d11.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d12.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d20.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d21.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d22.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d15.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d24.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d23.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d25.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d03.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d03.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d03.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d04.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d04.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d04.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d05.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d05.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d05.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d13.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d14.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d27.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d26.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d18.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d07.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d07.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d07.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d28.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d06.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d06.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d06.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d17.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d16.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d08.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d08.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d08.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d46.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d46.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d47.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d47.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d36.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d58.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d58.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d37.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d54.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d54.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d53.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d52.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d52.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d45.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d30.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d34.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d31.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d32.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d55.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d55.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d40.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d40.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d33.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d41.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d42.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d42.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d44.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d44.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d43.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d51.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d51.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d35.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d50.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d50.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d57.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d57.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d56.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d56.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d48.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d38.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d74.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d74.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d74.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d72.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d72.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d72.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d71.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d71.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d71.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d65.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d65.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d65.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d80.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d80.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d80.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d73.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d73.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d73.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d81.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d81.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d81.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d78.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d78.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d78.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d68.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d68.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d68.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d87.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d87.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d87.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d86.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d86.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d86.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d83.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d83.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d83.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d84.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d84.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d84.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d75.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d75.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d75.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d82.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d82.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d82.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d60.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d60.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d60.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d64.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d64.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d64.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d61.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d61.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d62.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d62.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d62.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d85.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d85.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d85.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d70.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d70.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d70.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d63.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d63.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d63.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d88.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d88.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d88.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d67.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d67.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d67.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d77.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d77.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d77.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d66.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d66.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d66.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        d76.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d76.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        d76.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        fileMenu.setMnemonic('f');
+        fileMenu.setText("File");
+
+        openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        openMenuItem.setMnemonic('o');
+        openMenuItem.setText("Open");
+        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(openMenuItem);
+
+        saveAsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        saveAsMenuItem.setMnemonic('a');
+        saveAsMenuItem.setText("Save As ...");
+        saveAsMenuItem.setDisplayedMnemonicIndex(5);
+        saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(saveAsMenuItem);
+
+        exitMenuItem.setMnemonic('x');
+        exitMenuItem.setText("Exit");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+
+        menuBar.add(fileMenu);
+
+        editMenu.setMnemonic('e');
+        editMenu.setText("Edit");
+
+        resetMenuItem.setText("Reset");
+        resetMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(resetMenuItem);
+
+        clearMenuItem.setMnemonic('d');
+        clearMenuItem.setText("Clear");
+        clearMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(clearMenuItem);
+
+        menuBar.add(editMenu);
+
+        setJMenuBar(menuBar);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d07, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d08, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(d86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(d88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d07, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d08, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(d86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(d80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(d82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+        fileChooser.setDialogTitle("Open Sudoku");
+        
+        if(JFileChooser.APPROVE_OPTION == fileChooser.showSaveDialog(this)) {
+            try(BufferedReader in = new BufferedReader(
+                    new FileReader(fileChooser.getSelectedFile()))) {
+                sudoku = new Sudoku(in.readLine());
+                loadSudoku();
+            } catch(IllegalArgumentException e) {
+                showError("Could not open Sudoku! Sudoku file is corrupted!");
+            } catch(IOException e) {
+                showError("Could not open Sudoku! Possible " +
+                        "reason: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_openMenuItemActionPerformed
+
+    private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+        fileChooser.setDialogTitle("Save Sudoku");
+        
+        if(JFileChooser.APPROVE_OPTION == fileChooser.showSaveDialog(this)) {
+            try(FileWriter fileWriter = new FileWriter(
+                    fileChooser.getSelectedFile())) {
+                fileWriter.write(sudoku.toString());
+            } catch(IOException e) {
+                showError("Could not save Sudoku! Possible " +
+                        "reason: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_saveAsMenuItemActionPerformed
+
+    private void clearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearMenuItemActionPerformed
+        sudoku = new Sudoku();
+        clearSudoku();
+    }//GEN-LAST:event_clearMenuItemActionPerformed
+
+    private void resetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMenuItemActionPerformed
+        sudoku.clear();
+        resetSudoku();
+    }//GEN-LAST:event_resetMenuItemActionPerformed
+
+    public static void main(String args[]) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | 
+                IllegalAccessException | UnsupportedLookAndFeelException e) {
+            System.err.println("No system LAF found!");
+        }
+        
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Player().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem clearMenuItem;
+    private javax.swing.JTextField d00;
+    private javax.swing.JTextField d01;
+    private javax.swing.JTextField d02;
+    private javax.swing.JTextField d03;
+    private javax.swing.JTextField d04;
+    private javax.swing.JTextField d05;
+    private javax.swing.JTextField d06;
+    private javax.swing.JTextField d07;
+    private javax.swing.JTextField d08;
+    private javax.swing.JTextField d10;
+    private javax.swing.JTextField d11;
+    private javax.swing.JTextField d12;
+    private javax.swing.JTextField d13;
+    private javax.swing.JTextField d14;
+    private javax.swing.JTextField d15;
+    private javax.swing.JTextField d16;
+    private javax.swing.JTextField d17;
+    private javax.swing.JTextField d18;
+    private javax.swing.JTextField d20;
+    private javax.swing.JTextField d21;
+    private javax.swing.JTextField d22;
+    private javax.swing.JTextField d23;
+    private javax.swing.JTextField d24;
+    private javax.swing.JTextField d25;
+    private javax.swing.JTextField d26;
+    private javax.swing.JTextField d27;
+    private javax.swing.JTextField d28;
+    private javax.swing.JTextField d30;
+    private javax.swing.JTextField d31;
+    private javax.swing.JTextField d32;
+    private javax.swing.JTextField d33;
+    private javax.swing.JTextField d34;
+    private javax.swing.JTextField d35;
+    private javax.swing.JTextField d36;
+    private javax.swing.JTextField d37;
+    private javax.swing.JTextField d38;
+    private javax.swing.JTextField d40;
+    private javax.swing.JTextField d41;
+    private javax.swing.JTextField d42;
+    private javax.swing.JTextField d43;
+    private javax.swing.JTextField d44;
+    private javax.swing.JTextField d45;
+    private javax.swing.JTextField d46;
+    private javax.swing.JTextField d47;
+    private javax.swing.JTextField d48;
+    private javax.swing.JTextField d50;
+    private javax.swing.JTextField d51;
+    private javax.swing.JTextField d52;
+    private javax.swing.JTextField d53;
+    private javax.swing.JTextField d54;
+    private javax.swing.JTextField d55;
+    private javax.swing.JTextField d56;
+    private javax.swing.JTextField d57;
+    private javax.swing.JTextField d58;
+    private javax.swing.JTextField d60;
+    private javax.swing.JTextField d61;
+    private javax.swing.JTextField d62;
+    private javax.swing.JTextField d63;
+    private javax.swing.JTextField d64;
+    private javax.swing.JTextField d65;
+    private javax.swing.JTextField d66;
+    private javax.swing.JTextField d67;
+    private javax.swing.JTextField d68;
+    private javax.swing.JTextField d70;
+    private javax.swing.JTextField d71;
+    private javax.swing.JTextField d72;
+    private javax.swing.JTextField d73;
+    private javax.swing.JTextField d74;
+    private javax.swing.JTextField d75;
+    private javax.swing.JTextField d76;
+    private javax.swing.JTextField d77;
+    private javax.swing.JTextField d78;
+    private javax.swing.JTextField d80;
+    private javax.swing.JTextField d81;
+    private javax.swing.JTextField d82;
+    private javax.swing.JTextField d83;
+    private javax.swing.JTextField d84;
+    private javax.swing.JTextField d85;
+    private javax.swing.JTextField d86;
+    private javax.swing.JTextField d87;
+    private javax.swing.JTextField d88;
+    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JMenuItem resetMenuItem;
+    private javax.swing.JMenuItem saveAsMenuItem;
+    // End of variables declaration//GEN-END:variables
+
+    private void initLocationsMap() {
+        locations.put(d00, new Point(0, 0));
+        locations.put(d01, new Point(0, 1));
+        locations.put(d02, new Point(0, 2));
+        locations.put(d03, new Point(0, 3));
+        locations.put(d04, new Point(0, 4));
+        locations.put(d05, new Point(0, 5));
+        locations.put(d06, new Point(0, 6));
+        locations.put(d07, new Point(0, 7));
+        locations.put(d08, new Point(0, 8));
+        
+        locations.put(d10, new Point(1, 0));
+        locations.put(d11, new Point(1, 1));
+        locations.put(d12, new Point(1, 2));
+        locations.put(d13, new Point(1, 3));
+        locations.put(d14, new Point(1, 4));
+        locations.put(d15, new Point(1, 5));
+        locations.put(d16, new Point(1, 6));
+        locations.put(d17, new Point(1, 7));
+        locations.put(d18, new Point(1, 8));
+        
+        locations.put(d20, new Point(2, 0));
+        locations.put(d21, new Point(2, 1));
+        locations.put(d22, new Point(2, 2));
+        locations.put(d23, new Point(2, 3));
+        locations.put(d24, new Point(2, 4));
+        locations.put(d25, new Point(2, 5));
+        locations.put(d26, new Point(2, 6));
+        locations.put(d27, new Point(2, 7));
+        locations.put(d28, new Point(2, 8));
+        
+        locations.put(d30, new Point(3, 0));
+        locations.put(d31, new Point(3, 1));
+        locations.put(d32, new Point(3, 2));
+        locations.put(d33, new Point(3, 3));
+        locations.put(d34, new Point(3, 4));
+        locations.put(d35, new Point(3, 5));
+        locations.put(d36, new Point(3, 6));
+        locations.put(d37, new Point(3, 7));
+        locations.put(d38, new Point(3, 8));
+        
+        locations.put(d40, new Point(4, 0));
+        locations.put(d41, new Point(4, 1));
+        locations.put(d42, new Point(4, 2));
+        locations.put(d43, new Point(4, 3));
+        locations.put(d44, new Point(4, 4));
+        locations.put(d45, new Point(4, 5));
+        locations.put(d46, new Point(4, 6));
+        locations.put(d47, new Point(4, 7));
+        locations.put(d48, new Point(4, 8));
+        
+        locations.put(d50, new Point(5, 0));
+        locations.put(d51, new Point(5, 1));
+        locations.put(d52, new Point(5, 2));
+        locations.put(d53, new Point(5, 3));
+        locations.put(d54, new Point(5, 4));
+        locations.put(d55, new Point(5, 5));
+        locations.put(d56, new Point(5, 6));
+        locations.put(d57, new Point(5, 7));
+        locations.put(d58, new Point(5, 8));
+        
+        locations.put(d60, new Point(6, 0));
+        locations.put(d61, new Point(6, 1));
+        locations.put(d62, new Point(6, 2));
+        locations.put(d63, new Point(6, 3));
+        locations.put(d64, new Point(6, 4));
+        locations.put(d65, new Point(6, 5));
+        locations.put(d66, new Point(6, 6));
+        locations.put(d67, new Point(6, 7));
+        locations.put(d68, new Point(6, 8));
+        
+        locations.put(d70, new Point(7, 0));
+        locations.put(d71, new Point(7, 1));
+        locations.put(d72, new Point(7, 2));
+        locations.put(d73, new Point(7, 3));
+        locations.put(d74, new Point(7, 4));
+        locations.put(d75, new Point(7, 5));
+        locations.put(d76, new Point(7, 6));
+        locations.put(d77, new Point(7, 7));
+        locations.put(d78, new Point(7, 8));
+        
+        locations.put(d80, new Point(8, 0));
+        locations.put(d81, new Point(8, 1));
+        locations.put(d82, new Point(8, 2));
+        locations.put(d83, new Point(8, 3));
+        locations.put(d84, new Point(8, 4));
+        locations.put(d85, new Point(8, 5));
+        locations.put(d86, new Point(8, 6));
+        locations.put(d87, new Point(8, 7));
+        locations.put(d88, new Point(8, 8));
+    }
+
+    private void initKeyListeners() {
+        for(JTextField textField : locations.keySet()) {
+            textField.addKeyListener(this);
+        }
+    }
+
+    private void clearSudoku() {
+        for(JTextField textField : locations.keySet()) {
+            textField.setText("");
+            textField.setEditable(true);
+        }
+    }
+    
+    private void resetSudoku() {
+        for(JTextField textField : locations.keySet()) {
+            if(textField.isEditable()) {
+                textField.setText("");
+            }
+        }
+    }
+    
+    private void loadSudoku() {
+        for(int y = 0 ; y < 9 ; y++) {
+            for(int x = 0 ; x < 9 ; x++) {
+                Point p = new Point(y, x);
+                
+                for(Entry<JTextField, Point> entry : locations.entrySet()) {
+                    if(p.equals(entry.getValue())) {
+                        char c = sudoku.getDataAt(y, x);
+                        entry.getKey().setText("" + (c == '0' ? ' ' : c));
+                        entry.getKey().setEditable(!sudoku.isFrozenAt(y, x));
+                    }
+                }
+            }
+        }
+    }
+    
+    private void showWarning(String message) {
+        JOptionPane.showMessageDialog(this, message, 
+                "Warning!", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    private void showError(String message) {
+        JOptionPane.showMessageDialog(this, message, 
+                "Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private void showSuccess(String message) {
+        JOptionPane.showMessageDialog(this, message,
+                "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    @Override
+    public void keyTyped(KeyEvent evt) {
+        JTextField source = (JTextField) evt.getSource();
+        Point location = locations.get(source);
+        
+        char c = evt.getKeyChar();
+
+        try {
+            if(sudoku.setDataAt(location.x, location.y, c)) {
+                source.setText("" + (c == '0' ? ' ' : c));
+                
+                if(sudoku.isFull()) {
+                    showSuccess("Congratulations! You have successfully " +
+                            "completed this Sudoku!");
+                }
+            } else {
+                showWarning("Placing " + c + " here would not " +
+                        "comply to Sudoku rules!");
+            }
+        } catch(IllegalArgumentException e) {
+            //System.err.println("NOT ALLOWED");
+        }
+        
+        evt.consume();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+}
