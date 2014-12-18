@@ -1,0 +1,349 @@
+package com.sudoku;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+
+public class SudokuTest {
+    
+    private Sudoku validSudoku;
+    private String validSudokuString;
+    private String invalidRowInitString;
+    private String invalidColumnInitString;
+    private String invalidSegmentInitString;
+    
+    public SudokuTest() {
+    }
+    
+    @Before
+    public void setUp() {
+        validSudokuString =
+            // frozen
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "010" + "000" + "010" +
+            "000" + "000" + "000" +
+            // data
+            "123" + "000" + "000" +
+            "456" + "000" + "000" +
+            "789" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "030" + "000" + "020" +
+            "000" + "000" + "000";
+        
+        validSudoku = new Sudoku(validSudokuString);
+        
+        invalidColumnInitString = 
+            // frozen
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "010" + "000" + "010" +
+            "000" + "000" + "000" +
+            // data
+            "123" + "000" + "000" +
+            "456" + "000" + "000" +
+            "789" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "050" + "000" + "020" +
+            "000" + "000" + "000";
+        
+        invalidRowInitString = 
+            // frozen
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "010" + "000" + "010" +
+            "000" + "000" + "000" +
+            // data
+            "123" + "000" + "000" +
+            "456" + "000" + "000" +
+            "789" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "030" + "000" + "030" +
+            "000" + "000" + "000";
+        
+        invalidSegmentInitString = 
+            // frozen
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+            "111" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "010" + "000" + "010" +
+            "000" + "000" + "000" +
+            // data
+            "123" + "000" + "000" +
+            "456" + "000" + "000" +
+            "789" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "000" + "010" + "000" +
+            "000" + "000" + "000" +
+
+            "000" + "000" + "000" +
+            "030" + "000" + "020" +
+            "300" + "000" + "000";
+    }
+    
+    @Test
+    public void newSudokuShouldBeEmpty() {
+        assertTrue(new Sudoku().isEmpty());
+    }
+    
+    @Test
+    public void sudkusWithValidInitStringShouldNotBeEmpty() {
+        assertFalse(validSudoku.isEmpty());
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void sudokuWithNullInitStringShouldThrowException() {
+        Sudoku sudoku = new Sudoku(null);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void sudokuWithEmptyInitStringShouldThrowException() {
+        Sudoku sudoku = new Sudoku("");
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void sudokuWithTooShortInitStringShouldThrowException() {
+        Sudoku sudoku = new Sudoku("111");
+    }
+    
+    @Test(expected = IllegalArgumentException.class) 
+    public void sudokuWithInvalidCharactersInInitStringShouldThrowException() {
+        String replaced = validSudokuString.replaceAll("1", "a");
+        Sudoku sudoku = new Sudoku(replaced);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void sudokuWithInvalidRowInInitStringShouldThrowException() {
+        Sudoku sudoku = new Sudoku(invalidRowInitString);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void sudokuWithInvalidColumnInInitStringShouldThrowException() {
+        Sudoku sudoku = new Sudoku(invalidColumnInitString);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void sudokuWithInvalidSegmentInInitStringShouldThrowException() {
+        Sudoku sudoku = new Sudoku(invalidSegmentInitString);
+    }
+    
+    @Test
+    public void sudokuWithValidInitStringShouldNotBeLeftEmpty() {
+        assertFalse(validSudoku.isEmpty());
+    }
+    
+    @Test
+    public void toStringShouldReturnAValidInitString() {
+        assertEquals(validSudokuString, validSudoku.toString());
+    }
+    
+    @Test
+    public void isFrozenAtShouldThrowExceptionForOutboundIndexes() {
+        try {
+            validSudoku.isFrozenAt(-1, 0);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.isFrozenAt(0, -1);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.isFrozenAt(9, 0);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.isFrozenAt(0, 9);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+    }
+    
+    @Test
+    public void getDataAtShouldThrowExceptionForOutboundIndexes() {
+        try {
+            validSudoku.getDataAt(-1, 0);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.getDataAt(0, -1);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.getDataAt(9, 0);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.getDataAt(0, 9);
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+    }
+    
+    @Test
+    public void setDataAtShouldThrowExceptionForOutboundIndexes() {
+        try {
+            validSudoku.setDataAt(-1, 0, '0');
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.setDataAt(0, -1, '0');
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.setDataAt(9, 0, '0');
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+        
+        try {
+            validSudoku.setDataAt(0, 9, '0');
+            fail("Expected an exception!");
+        } catch(IllegalArgumentException expected) {}
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void setDataAtShouldThrowExceptionForFrozenLocations() {
+        validSudoku.setDataAt(1, 1, '0');
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void setDataAtShouldThrowExceptionForIncorrectData() {
+        validSudoku.setDataAt(5, 5, 'a');
+    }
+    
+    @Test
+    public void setDataAtShouldReturnFalseForInvalidColumnPlacement() {
+        assertFalse(validSudoku.setDataAt(3, 0, '7'));
+    }
+    
+    @Test
+    public void setDataAtShouldReturnFalseForInvalidRowPlacement() {
+        assertFalse(validSudoku.setDataAt(0, 3, '3'));
+    }
+    
+    @Test
+    public void setDataAtShouldReturnFalseForInvalidSegmentPlacement() {
+        assertFalse(validSudoku.setDataAt(8, 0, '3'));
+    }
+    
+    @Test
+    public void setDataAtShouldBeAlwaysPossibleForZeroingLocation() {
+        assertTrue(validSudoku.setDataAt(3, 3, '0'));
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void setDataAtShouldNotZeroFrozenLocation() {
+        validSudoku.setDataAt(4, 4, '0');
+    }
+    
+    @Test
+    public void setDataAtShouldModifySudokuAndReturnTrueForCorrectData() {
+        assertTrue(validSudoku.setDataAt(8, 0, '2'));
+        assertEquals('2', validSudoku.getDataAt(8, 0));
+    }
+    
+    @Test
+    public void setDataAtShouldNotModifyFrozenArray() {
+        validSudoku.setDataAt(8, 0, '2');
+        assertFalse(validSudoku.isFrozenAt(8, 0));
+    }
+  
+    @Test
+    public void isFullWorksCorrectly() {
+        assertFalse(validSudoku.isFull());
+        assertTrue(new Sudoku(
+            "00000000000000000000000000000000000000000" + 
+            "0000000000000000000000000000000000000000" +
+            "35247618916895273474981362542569781368324" +
+            "1597971538462897365241214789356536124978").isFull());
+    }
+    
+    @Test
+    public void clearWorksCorrectly() {
+        validSudoku.clear();
+        
+        for(int y = 0 ; y < 9 ; y++) {
+            for(int x = 0 ; x < 9 ; x++) {
+                if(!validSudoku.isFrozenAt(y, x)) {
+                    assertEquals('0', validSudoku.getDataAt(y, x));
+                }
+            }
+        }
+    }
+    
+    @Test
+    public void isFrozenAtShouldReturnCorrectValueForValidIndexes() {
+        assertTrue(validSudoku.isFrozenAt(0,0));
+        assertTrue(validSudoku.isFrozenAt(2,1));
+        assertTrue(validSudoku.isFrozenAt(1,2));
+        assertTrue(validSudoku.isFrozenAt(7,1));
+        assertFalse(validSudoku.isFrozenAt(5,7));
+        assertFalse(validSudoku.isFrozenAt(6,6));
+        assertFalse(validSudoku.isFrozenAt(5,5));
+        assertFalse(validSudoku.isFrozenAt(4,1));
+    }
+    
+    @Test
+    public void getDataAtShouldReturnCorrectValueForValidIndexes() {
+        assertEquals('1', validSudoku.getDataAt(0,0));
+        assertEquals('8', validSudoku.getDataAt(2,1));
+        assertEquals('6', validSudoku.getDataAt(1,2));
+        assertEquals('3', validSudoku.getDataAt(7,1));
+        assertEquals('0', validSudoku.getDataAt(5,7));
+        assertEquals('0', validSudoku.getDataAt(6,6));
+        assertEquals('0', validSudoku.getDataAt(5,5));
+        assertEquals('0', validSudoku.getDataAt(4,1));
+    }
+    
+}
